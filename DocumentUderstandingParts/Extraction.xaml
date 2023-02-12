@@ -1,0 +1,159 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Extraction" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:p1="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p3="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_path" Type="InArgument(x:String)" />
+    <x:Property Name="in_taxonomy" Type="InArgument(p:DocumentTaxonomy)" />
+    <x:Property Name="out_extractionResults" Type="OutArgument(p1:ExtractionResult)" />
+    <x:Property Name="in_dom" Type="InArgument(p2:Document)" />
+    <x:Property Name="in_text" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>563.2,800</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="64">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DataExtraction</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.ValidationStation</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>UiPath.Core</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Extraction" sap:VirtualizedContainerService.HintSize="540,735.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="477.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extracting data from file: &quot;+in_path]" />
+    <p3:DataExtractionScope ClassificationResult="{x:Null}" DisplayName="Data Extraction Scope" DocumentObjectModel="[in_dom]" DocumentPath="[in_path]" DocumentText="[in_text]" DocumentTypeId="Accounting.Incoming.Fakturi" ExtractionResult="[out_extractionResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="477.6,490.4" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[in_taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI180251d3d4784e0fa5de9b57b8a95504&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;Financial.Reports.W-9&quot;:{&quot;FieldMappings&quot;:{&quot;Financial.Reports.W-9.name&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.name&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Financial.Reports.W-9.business-name&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.business-name&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Financial.Reports.W-9.individual&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.individual&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Financial.Reports.W-9.c-corporation&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.c-corporation&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Financial.Reports.W-9.s-corporation&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.s-corporation&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Financial.Reports.W-9.partnership&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.partnership&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Financial.Reports.W-9.trust-estate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.trust-estate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Financial.Reports.W-9.limited-liability-company&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.limited-liability-company&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Financial.Reports.W-9.other&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.other&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Financial.Reports.W-9.signature&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Financial.Reports.W-9.signature&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;Medical.InsuranceClaimForms.CMS1500&quot;:{&quot;FieldMappings&quot;:{&quot;Medical.InsuranceClaimForms.CMS1500.patient-name&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Medical.InsuranceClaimForms.CMS1500.patient-name&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Medical.InsuranceClaimForms.CMS1500.patient-address&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Medical.InsuranceClaimForms.CMS1500.patient-address&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Medical.InsuranceClaimForms.CMS1500.patient-birthdate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Medical.InsuranceClaimForms.CMS1500.patient-birthdate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Medical.InsuranceClaimForms.CMS1500.patient-sex-f&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Medical.InsuranceClaimForms.CMS1500.patient-sex-f&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Medical.InsuranceClaimForms.CMS1500.patient-sex-m&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Medical.InsuranceClaimForms.CMS1500.patient-sex-m&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Medical.InsuranceClaimForms.CMS1500.patient-total-charge&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Medical.InsuranceClaimForms.CMS1500.patient-total-charge&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;Accounting.Incoming.Fakturi&quot;:{&quot;FieldMappings&quot;:{&quot;Accounting.Incoming.Fakturi.clientCompany&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.clientCompany&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.clientName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.clientName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.clientAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.clientAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.clientCity&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.clientCity&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.clientCountry&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.clientCountry&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.vendorCompany&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.vendorCompany&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.vendorAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.vendorAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.vendorCity&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.vendorCity&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.invoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.invoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.invoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.invoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.dueDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.dueDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.subTotal&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.subTotal&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.salesTax&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.salesTax&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.items&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.items&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.items.description&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.items.description&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.items.quantity&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.items.quantity&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.items.rate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.items.rate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Accounting.Incoming.Fakturi.items.price&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Accounting.Incoming.Fakturi.items.price&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UI180251d3d4784e0fa5de9b57b8a95504&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UI180251d3d4784e0fa5de9b57b8a95504&quot;:[]}}">
+      <p3:DataExtractionScope.Extractors>
+        <p3:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="8FWq+OuiAL/v0VST2rx5zB2rsc/LMcY8G5Y9EYsThQNcdofAwFQ527sBqvZHJRcB" DisplayName="Form Extractor" Endpoint="https://formextractor.uipath.com/" sap:VirtualizedContainerService.HintSize="233.6,164" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UI180251d3d4784e0fa5de9b57b8a95504" SerializedSettings="{}{}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;Accounting.Incoming.Fakturi&quot;,&quot;FormId&quot;:&quot;315bc051&quot;,&quot;FormName&quot;:&quot;InvoiceTemplate&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,594.0,842.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Од:&quot;,&quot;Box&quot;:[200.3,45.48,16.94,11.04]},{&quot;Text&quot;:&quot;ФАКТУРА&quot;,&quot;Box&quot;:[78.98,355.99,135.58,34.56]},{&quot;Text&quot;:&quot;Фактура#&quot;,&quot;Box&quot;:[176.54,408.55,45.25,11.04]},{&quot;Text&quot;:&quot;Дата&quot;,&quot;Box&quot;:[203.3,409.75,22.6,11.04]},{&quot;Text&quot;:&quot;Рок&quot;,&quot;Box&quot;:[231.29,409.63,17.22,11.04]},{&quot;Text&quot;:&quot;Опис&quot;,&quot;Box&quot;:[287.93,51.6,23.74,11.04]},{&quot;Text&quot;:&quot;Количина&quot;,&quot;Box&quot;:[287.93,377.71,45.73,11.04]},{&quot;Text&quot;:&quot;Рата&quot;,&quot;Box&quot;:[287.93,467.14,20.63,11.04]},{&quot;Text&quot;:&quot;Цена&quot;,&quot;Box&quot;:[287.93,531.6,23.78,11.04]},{&quot;Text&quot;:&quot;Белешки&quot;,&quot;Box&quot;:[587.26,44.04,42.96,11.04]},{&quot;Text&quot;:&quot;Услови&quot;,&quot;Box&quot;:[697.2,44.04,33.97,11.04]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.clientCompany&quot;,&quot;Box&quot;:[53.2049,25.5092,240.5153,37.8994]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.clientName&quot;,&quot;Box&quot;:[87.4601,22.5939,244.8883,21.1362]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.clientAddress&quot;,&quot;Box&quot;:[103.4945,23.3227,258.0074,22.5939]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.clientCity&quot;,&quot;Box&quot;:[123.9018,19.6785,266.0245,17.492]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.clientCountry&quot;,&quot;Box&quot;:[139.9362,28.4245,253.6344,23.3227]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.vendorCompany&quot;,&quot;Box&quot;:[212.8196,22.5939,274.7706,25.5092]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.vendorAddress&quot;,&quot;Box&quot;:[230.3117,21.865,276.9571,23.3227]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.vendorCity&quot;,&quot;Box&quot;:[250.719,26.238,273.3129,20.4074]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.invoiceNumber&quot;,&quot;Box&quot;:[164.7166,454.7926,129.0037,29.1534]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.invoiceDate&quot;,&quot;Box&quot;:[195.3276,454.0638,131.1902,30.611]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.dueDate&quot;,&quot;Box&quot;:[220.108,456.9791,126.8172,36.4417]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.subTotal&quot;,&quot;Box&quot;:[488.319,446.0466,122.4442,31.3399]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.salesTax&quot;,&quot;Box&quot;:[516.0147,447.5043,120.2577,33.5264]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.total&quot;,&quot;Box&quot;:[548.0834,448.2331,118.0712,37.8994]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.notes&quot;,&quot;Box&quot;:[597.6442,17.492,559.7448,89.6466]},{&quot;Field&quot;:&quot;Accounting.Incoming.Fakturi.rulesAndConditions&quot;,&quot;Box&quot;:[714.9865,18.9497,551.7276,109.3252]}],&quot;Tables&quot;:[{&quot;FieldId&quot;:&quot;Accounting.Incoming.Fakturi.items&quot;,&quot;Headers&quot;:[{&quot;FieldId&quot;:&quot;Accounting.Incoming.Fakturi.items.description&quot;,&quot;Box&quot;:[275.4994,45.9166,315.5853,36.4417]},{&quot;FieldId&quot;:&quot;Accounting.Incoming.Fakturi.items.quantity&quot;,&quot;Box&quot;:[268.9399,368.7902,73.6123,42.2724]},{&quot;FieldId&quot;:&quot;Accounting.Incoming.Fakturi.items.rate&quot;,&quot;Box&quot;:[267.4822,438.0294,58.3067,47.3742]},{&quot;FieldId&quot;:&quot;Accounting.Incoming.Fakturi.items.price&quot;,&quot;Box&quot;:[263.838,491.9632,81.6294,56.1202]}],&quot;Cells&quot;:[{&quot;Row&quot;:0,&quot;Column&quot;:0,&quot;Box&quot;:[313.3988,43.7301,322.1448,30.611]},{&quot;Row&quot;:0,&quot;Column&quot;:1,&quot;Box&quot;:[314.8564,366.6037,77.2564,26.238]},{&quot;Row&quot;:0,&quot;Column&quot;:2,&quot;Box&quot;:[314.1276,443.1313,52.4761,30.611]},{&quot;Row&quot;:0,&quot;Column&quot;:3,&quot;Box&quot;:[311.2123,500.7092,58.3067,28.4245]},{&quot;Row&quot;:1,&quot;Column&quot;:0,&quot;Box&quot;:[344.0098,44.4589,319.2294,33.162]},{&quot;Row&quot;:1,&quot;Column&quot;:1,&quot;Box&quot;:[344.0098,363.6883,82.3583,33.162]},{&quot;Row&quot;:1,&quot;Column&quot;:2,&quot;Box&quot;:[344.0098,446.0466,56.1202,33.162]},{&quot;Row&quot;:1,&quot;Column&quot;:3,&quot;Box&quot;:[344.0098,502.1669,59.4,33.162]},{&quot;Row&quot;:2,&quot;Column&quot;:0,&quot;Box&quot;:[377.5362,38.6282,327.5959,29.1383]},{&quot;Row&quot;:2,&quot;Column&quot;:1,&quot;Box&quot;:[377.5362,366.2241,66.3239,29.1383]},{&quot;Row&quot;:2,&quot;Column&quot;:2,&quot;Box&quot;:[377.5362,432.5481,59.0356,29.1383]},{&quot;Row&quot;:2,&quot;Column&quot;:3,&quot;Box&quot;:[377.5362,491.5837,68.8748,29.1383]},{&quot;Row&quot;:3,&quot;Column&quot;:0,&quot;Box&quot;:[401.9917,43.2766,328.9023,34.1404]},{&quot;Row&quot;:3,&quot;Column&quot;:1,&quot;Box&quot;:[401.9917,372.1789,67.3192,34.1404]},{&quot;Row&quot;:3,&quot;Column&quot;:2,&quot;Box&quot;:[401.9917,439.4981,57.7022,34.1404]},{&quot;Row&quot;:3,&quot;Column&quot;:3,&quot;Box&quot;:[401.9917,497.2003,68.7617,34.1404]},{&quot;Row&quot;:4,&quot;Column&quot;:0,&quot;Box&quot;:[434.6896,45.2,323.1321,31.2553]},{&quot;Row&quot;:4,&quot;Column&quot;:1,&quot;Box&quot;:[434.6896,368.3321,67.3192,31.2553]},{&quot;Row&quot;:4,&quot;Column&quot;:2,&quot;Box&quot;:[434.6896,435.6513,69.2426,31.2553]},{&quot;Row&quot;:4,&quot;Column&quot;:3,&quot;Box&quot;:[434.6896,504.8939,57.2213,31.2553]},{&quot;Row&quot;:5,&quot;Column&quot;:0,&quot;Box&quot;:[464.5024,42.3149,339.4811,32.217]},{&quot;Row&quot;:5,&quot;Column&quot;:1,&quot;Box&quot;:[464.5024,381.796,61.549,32.217]},{&quot;Row&quot;:5,&quot;Column&quot;:2,&quot;Box&quot;:[464.5024,443.3449,60.5873,32.217]},{&quot;Row&quot;:5,&quot;Column&quot;:3,&quot;Box&quot;:[464.5024,503.9322,78.3788,32.217]}]}]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
+          <p3:FormExtractor.DocumentBounds>
+            <InArgument x:TypeArguments="p1:ResultsDocumentBounds">
+              <DelegateArgumentValue x:TypeArguments="p1:ResultsDocumentBounds">
+                <DelegateInArgument x:TypeArguments="p1:ResultsDocumentBounds" Name="DocumentBounds" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p3:FormExtractor.DocumentBounds>
+          <p3:FormExtractor.DocumentObjectModel>
+            <InArgument x:TypeArguments="p2:Document">
+              <DelegateArgumentValue x:TypeArguments="p2:Document">
+                <DelegateInArgument x:TypeArguments="p2:Document" Name="DocumentObjectModel" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p3:FormExtractor.DocumentObjectModel>
+          <p3:FormExtractor.DocumentPath>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p3:FormExtractor.DocumentPath>
+          <p3:FormExtractor.DocumentText>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p3:FormExtractor.DocumentText>
+          <p3:FormExtractor.ExtractorDocumentType>
+            <InArgument x:TypeArguments="p4:ExtractorDocumentType">
+              <DelegateArgumentValue x:TypeArguments="p4:ExtractorDocumentType">
+                <DelegateInArgument x:TypeArguments="p4:ExtractorDocumentType" Name="ExtractorDocumentType" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p3:FormExtractor.ExtractorDocumentType>
+          <p3:FormExtractor.ExtractorResult>
+            <OutArgument x:TypeArguments="p4:ExtractorResult">
+              <DelegateArgumentReference x:TypeArguments="p4:ExtractorResult">
+                <DelegateOutArgument x:TypeArguments="p4:ExtractorResult" Name="ExtractorResult" />
+              </DelegateArgumentReference>
+            </OutArgument>
+          </p3:FormExtractor.ExtractorResult>
+          <p3:FormExtractor.PredictionId>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p3:FormExtractor.PredictionId>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </p3:FormExtractor>
+      </p3:DataExtractionScope.Extractors>
+    </p3:DataExtractionScope>
+  </Sequence>
+</Activity>
